@@ -268,6 +268,7 @@ Example:
   name.split(""); //["A", "r", "y", "a", " ", "S", "t", "a", "r", "k"];
   name.split(" "); //["Arya" "Stark"]
   name.split("*"); //["Arya Stark"]
+  name.split("", 3); //["A", "r", "y"]
 
 
 ```
