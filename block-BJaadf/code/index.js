@@ -15,12 +15,11 @@ console.log(fruits);
 
 // Log the element on index 0 and 1
 console.log(fruits[0], fruits[1]);
-
 // If the element at 0 index is undefined and index 1 is 'Banana' shift all the values to one lower index (use shift method)
 if(fruits[0] === undefined && fruits[1] === "Banana") {
     fruits.shift();
 }
-
+console.log(fruits);
 // Add a new element to the start ('Guava') and shift the index of all other to one higher value
 fruits.unshift("Guava");
 
@@ -41,31 +40,31 @@ fruits[1] = "Pears";
 fruits.splice(1, 2, "Kiwi", "Lemon");
 
 // Remove (slice) all the element from index 5
-    fruits.slice(5, 6);
+    fruits.slice(5);
 
 // Create another array named moreFruits with values ['Berries', 'Melons']
 let  moreFruits = [];
 moreFruits.push("Berries", "Melons");
 
 // Concat moreFruits into fruits array (re-assign so the value gets updated)
-moreFruits = moreFruits.concat(fruits);
+fruits = moreFruits.concat(fruits);
 
 // Log the name of all fruit in console
-console.log(moreFruits);
+fruits.forEach((fruit) => console.log(fruit));
 
 // Convert each fruit name to lowercase and log it
-moreFruits.forEach((fruit) => {
+fruits.forEach((fruit) => {
     console.log(fruit.toLowerCase());
 });
 
 // Convert all fruits name into lowercase and store in new array named lowercaseFruits
-let lowercaseFruits = moreFruits.map((fruit) => {
+let lowercaseFruits = fruits.map((fruit) => {
     return fruit.toLowerCase();
 });
 
 // Convert all fruits name into uppercase and store in new array named uppercaseFruits
 
-let upperCaseFruits = moreFruits.map((fruit) => {
+let upperCaseFruits = fruits.map((fruit) => {
        return fruit.toUpperCase(); 
 })
 
@@ -81,10 +80,12 @@ console.log(numbersTwo.flat(2));
 
 
 // Convert the numbersThree array to one level element.
-console.log(numbersThree.flat());
+console.log(numbersThree.flat(Infinity));
 // Remove all sub-arrays to individual elements, log them and update the value of numbersThree to the new flat array.
 numbersThree = numbersThree.flat(4);
-console.log(numbersThree);
+numbersThree.forEach((num) => {
+    console.log(num);
+})
 
 // Use forEach to log all the elements of numberThree array
 numbersThree.forEach((num) => {
