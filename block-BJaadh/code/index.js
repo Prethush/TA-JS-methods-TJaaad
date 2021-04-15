@@ -117,10 +117,9 @@ var customers = [
   { firstname: 'Jack', lastname: 'White' },
 ];
 // - Find all customers whose firstname starts with 'J'
-customers.forEach((obj) => {
-   if(obj.firstname[0] === "J") {
-     console.log(obj.firstname);
-   }
+let filteredCustomer = customers.filter((obj) => {
+   return obj.firstname[0] === "J"
+  
 });
 
 // - Create new array with only first name
@@ -138,5 +137,5 @@ console.log([...finalArray].sort());
 
 // - Create a new array that contains only user who has at least one vowel in the firstname.
 finalArray = customers.filter((obj) => {
-  return obj.firstname.includes("a") || obj.firstname.includes("e") || obj.firstname.includes("i") || obj.firstname.includes("o") || obj.firstname.includes("u");
+  return obj.firstname.toLowerCase().includes("a") || obj.firstname.toLowerCase().includes("e") || obj.firstname.toLowerCase().includes("i") || obj.firstname.toLowerCase().includes("o") || obj.firstname.toLowerCase().includes("u");
 });
