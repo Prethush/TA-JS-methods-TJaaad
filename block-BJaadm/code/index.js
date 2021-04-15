@@ -29,7 +29,6 @@ let peopleSex = persons.map((person) => {
 
 // Log the filtered named of people in peopleName that starts with 'J' or 'P'
 
-
 persons.filter((person) => {
   return person.name.toUpperCase().startsWith("J") || person.name.toUpperCase().startsWith("P");
 }).forEach((person) => {
@@ -104,12 +103,7 @@ persons.forEach((person) => {
 });
 
 // Filter all the male from persons array and store in malePersons array
-// let malePersons = [];
-// persons.forEach((person) => {
-//   if(person.sex === "M") {
-//     malePersons.push(person.name);
-//   }
-// });
+
 let malePersons = persons.filter((person) => {
   return person.sex === "M";
 }).map((person) => {
@@ -191,7 +185,7 @@ let highestGrade = persons.filter((person) => {
 });
 //yes
 // Sort the peopleGrade in descending order
-let sortedArray = [...persons].map((person) => {
+let sortedArray = persons.map((person) => {
   return person.grade;
 }).sort((a, b) => {
   return b - a;
