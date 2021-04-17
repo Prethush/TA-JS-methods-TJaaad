@@ -16,18 +16,64 @@ let persons = [
 // NOTE: Use reduce method whereever you can to solve this exercise:
 
 // Find the average grade
+let averageGrade = persons.reduce((acc, curr) => {
+  acc = acc + curr.grade;
+  return acc;
+}, 0) / persons.length;
 
 // Find the average grade of male
+let maleGrades = persons.filter((person) => {
+  return person.sex === "M";
+});
+
+let averageMaleGrade = maleGrades.reduce((acc, curr) => {
+  acc = acc + curr.grade;
+  return acc;
+}, 0) / maleGrades.length;
 
 // Find the average grade of female
+let femaleGrades = persons.filter((person) => {
+  return person.sex === "F";
+});
+
+let averageFemaleGrade = femaleGrades.reduce((acc, curr) => {
+  acc = acc + curr.grade;
+  return acc;
+}, 0) / femaleGrades.length;
 
 // Find the highest grade
+let highestGrade = persons.reduce((acc, curr) => {
+  if(curr.grade > acc) {
+    acc = curr.grade;
+  }
+  return acc;
+}, 0);
 
 // Find the highest grade in male
+let highestMaleGrade = maleGrades.reduce((acc, curr) => {
+  if(curr.grade > acc) {
+    acc = curr.grade;
+  }
+  return acc;
+}, 0);
 
 // Find the highest grade in female
+let highestfemaleGrade = femaleGrades.reduce((acc, curr) => {
+  if(curr.grade > acc) {
+    acc = curr.grade;
+  }
+  return acc;
+}, 0);
 
 // Find the highest grade for people whose name starts with 'J' or 'P'
+let jpHighestGrade = persons.filter((person) => {
+  return person.name.startsWith("J") || person.name.startsWith("P");
+}).reduce((acc, curr) => {
+  if(curr.grade > acc) {
+    acc = curr.grade;
+  }
+  return acc;
+}, 0);
 
 const fruitBasket = [
   'banana',
@@ -51,7 +97,15 @@ that fruit has appeared in the array. Store it in new variable fruitsObj
 Output: 
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
-
+let fruitObj = fruitBasket.reduce((acc, curr) => {
+  if(acc[curr] !== undefined) {
+    acc[curr]++;
+  } else {
+    acc[curr] = 1;
+  }
+  return acc;
+  
+}, {});
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -62,6 +116,10 @@ Output:
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
 
+// let arrayOfArray = fruitBasket.reduce((acc, curr) => {
+//   let f
+// })
+
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -70,6 +128,11 @@ const data = [
 ];
 
 // Using reduce flat data array
+let flatData = 
+  data.reduce((acc, curr) => {
+  acc = acc.concat(curr);
+  return acc;
+}, []);
 
 const dataTwo = [
   [1, 2, 3],
@@ -80,6 +143,12 @@ const dataTwo = [
 
 // Using reduce flat dataTwo array
 
+function arrayFlat(arr) {
+  return arr.reduce((acc, curr) => {
+     acc = Array.isArray(curr) ? acc.concat(arrayFlat(curr)) : acc.concat(curr);
+     return acc;
+  }, []);
+}
 /*
 
 Create these functions which accepts a number value and returns a number value:
@@ -89,6 +158,22 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
+
+function increment(num) {
+  return ++num;
+}
+function double(num) {
+  return num * 2;
+}
+function decrement(num) {
+  return  --num;
+}
+function triple(num) {
+  return num * 3;
+}
+function half(num) {
+  return Math.round(num / 2);
+}
 
 let pipeline = [
   increment,
@@ -114,7 +199,12 @@ EXAMPLE:
 
   ...
 */
-
+let output1 = 
+pipeline.reduce((acc, curr) => {
+  acc = curr(acc);
+   return acc;
+}, 3);
+//19
 let pipeline2 = [
   increment,
   half,
@@ -130,3 +220,10 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+
+let output2 =
+pipeline2.reduce((acc, curr) => {
+  acc = curr(acc);
+  return acc;
+}, 8);
+//219
