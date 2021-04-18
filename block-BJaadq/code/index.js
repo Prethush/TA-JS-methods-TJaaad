@@ -2,18 +2,11 @@
 
 function countAllPeople() {
   // your code goes here
-let final = [];
-  function allHouses(peopleName) {
-    peopleName.forEach((userName) => {
-      final.push(userName.name);
-    });
-  }
-   got.houses.map((houseName) => {
-    return houseName.people;
-  }).forEach((peopleName) => {
-    allHouses(peopleName);
-  });
-return final.length;
+let totalPeople = 0;
+got.houses.forEach((house) => {
+  totalPeople += house.people.length;
+});
+ return totalPeople;
 }
 function peopleByHouses() {
   // your code goes here
@@ -27,16 +20,12 @@ function peopleByHouses() {
 function everyone() {
   // your code goes here
   let final = [];
-  function allHouses(peopleName) {
-      peopleName.forEach((userName) => {
-        final.push(userName.name);
-      })
-  }
 
-  got.houses.map((house) => {
-    return house.people;
-  }).forEach((peopleName) => {
-    allHouses(peopleName);
+  got.houses.forEach((house) => {
+    let peopleName = house.people.map((person) => {
+      return person.name;
+    });
+    final = final.concat(peopleName);
   });
   return final;
 }
@@ -44,94 +33,70 @@ function everyone() {
 function nameWithS() {
   // your code goes here
   let final = [];
-  function allHouses(peopleName) {
-     peopleName.forEach((userName) => {
-        if(userName.name.toLowerCase().includes("s")) {
-          final.push(userName.name);
-        }
-      })
-  }
-
-  got.houses.map((house) => {
-    return house.people;
-  }).forEach((peopleName) => {
-    allHouses(peopleName);
+  got.houses.forEach((house) => {
+    let peopleName =house.people.map((person) => {
+      return person.name;
+    }).filter((personName) => {
+      return personName.toLocaleLowerCase().includes("s");
+    });
+    final = final.concat(peopleName);
   });
-  return final;
+return final;
 }
 
 function nameWithA() {
   // your code goes here
   let final = [];
-  function allHouses(peopleName) {
-     peopleName.forEach((userName) => {
-        if(userName.name.toLowerCase().includes("a")) {
-          final.push(userName.name);
-        }
-      })
-  }
-
-  got.houses.map((house) => {
-    return house.people;
-  }).forEach((peopleName) => {
-    allHouses(peopleName);
-  });
+  got.houses.forEach((house) => {
+    let peopleName = house.people.map((person) => {
+      return person.name;
+    }).filter((personName) => {
+      return personName.toLowerCase().includes("a");
+    });
+    final = final.concat(peopleName);
+  })
   return final;
 }
 
 function surnameWithS() {
   // your code goes here
   let final = [];
-  function allHouses(peopleName) {
-     peopleName.forEach((userName) => {
-        let arr = userName.name.split(" ");
-        if(arr[1][0] === "S") {
-          final.push(userName.name);
-        }
-      })
-  }
-
-  got.houses.map((house) => {
-    return house.people;
-  }).forEach((peopleName) => {
-    allHouses(peopleName);
-  });
+  got.houses.forEach((house) => {
+    let peopleName = house.people.map((person) => {
+      return person.name;
+    }).filter((personName) => {
+        let surname = personName.split(" ");
+        return surname[1][0].startsWith("S");
+    });
+      final = final.concat(peopleName);
+  })
   return final;
 }
 
 function surnameWithA() {
   // your code goes here
   let final = [];
-  function allHouses(peopleName) {
-     peopleName.forEach((userName) => {
-        let arr = userName.name.split(" ");
-        if(arr[1][0] === "A") {
-          final.push(userName.name);
-        }
-      })
-  }
-
-  got.houses.map((house) => {
-    return house.people;
-  }).forEach((peopleName) => {
-    allHouses(peopleName);
-  });
+  got.houses.forEach((house) => {
+    let peopleName = house.people.map((person) => {
+      return person.name;
+    }).filter((personName) => {
+        let surname = personName.split(" ");
+        return surname[1][0].startsWith("A");
+    });
+      final = final.concat(peopleName);
+  })
   return final;
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
   let obj = {};
-  function allHouse(peopleName) {
-   return  peopleName.map((userName) => {
-        return userName.name;
-    } )
-  }
-
-  got.houses.forEach((houseName) => {
-    obj[houseName.name] = allHouse(houseName.people);
-
-  });
+  got.houses.forEach((house) => {
+    let peopleName = house.people.map((person) => {
+      return person.name;
+    });
+    obj[house.name] = peopleName;
+  })
   return obj;
 }
 
