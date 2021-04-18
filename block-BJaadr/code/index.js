@@ -2,34 +2,107 @@
 
 function countAllPeople() {
   // your code goes here
+  
+  let totalPeople =
+  got.houses.reduce((acc, curr) => {
+    acc += curr.people.length;
+    return acc;
+  }, 0);
+  return totalPeople;
 }
 
 function peopleByHouses() {
   // your code goes here
+  let peopleName = 
+  got.houses.reduce((acc, curr) => {
+    acc[curr.name] = curr.people.length;
+    return acc;
+  }, {});
+  return peopleName;
 }
 
 function everyone() {
   // your code goes here
+ return  got.houses.reduce((acc, curr) => {
+    let  peopleName = 
+    curr.people.reduce((acc, curr) => {
+    acc =  acc.concat(curr.name);
+      return acc;
+    }, []);
+    acc = acc.concat(peopleName);
+    return acc;
+  }, []);
 }
 
 function nameWithS() {
   // your code goes here
+    return got.houses.reduce((acc, curr) => {
+    let peopleName = curr.people.reduce((acc, curr) => {
+      if(curr.name.toLowerCase().includes("s")) {
+        acc = acc.concat(curr.name);
+      }
+      return acc;
+    }, []);
+    acc = acc.concat(peopleName);
+    return acc;
+  }, []);
+  
 }
 
 function nameWithA() {
   // your code goes here
+  return got.houses.reduce((acc, curr) => {
+    let peopleName = curr.people.reduce((acc, curr) => {
+      if(curr.name.toLowerCase().includes("a")) {
+        acc = acc.concat(curr.name);
+      }
+      return acc;
+    }, []);
+    acc = acc.concat(peopleName);
+    return acc;
+  }, []);
+
 }
 
 function surnameWithS() {
   // your code goes here
+ return  got.houses.reduce((acc, curr) => {
+    let peopleName = curr.people.reduce((acc, curr) => {
+        if(curr.name.split(" ")[1].includes("S")) {
+          acc = acc.concat(curr.name);
+        }
+        return acc;
+    }, []);
+    acc = acc.concat(peopleName);
+    return acc;
+  }, [])
 }
 
 function surnameWithA() {
   // your code goes here
+  return  got.houses.reduce((acc, curr) => {
+    let peopleName = curr.people.reduce((acc, curr) => {
+        if(curr.name.split(" ")[1].includes("A")) {
+          acc = acc.concat(curr.name);
+        }
+        return acc;
+    }, []);
+    acc = acc.concat(peopleName);
+    return acc;
+  }, [])
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  return got.houses.reduce((acc, curr) => {
+    let peopleName = curr.people.reduce((acc, curr) => {
+      acc = acc.concat(curr.name);
+      return acc;
+    }, []);
+    
+    acc[curr.name] = peopleName;
+    return acc;
+  }, {})
 }
 
 // Testing your result after writing your function
