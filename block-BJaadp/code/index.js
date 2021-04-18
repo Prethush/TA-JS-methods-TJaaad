@@ -116,9 +116,10 @@ Output:
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
 
-// let arrayOfArray = fruitBasket.reduce((acc, curr) => {
-//   let f
-// })
+let fruitArray  = Object.keys(fruitObj).reduce((acc, curr) => {
+    acc = acc.concat([[curr, fruitObj[curr]]]);
+    return acc;
+}, []);
 
 const data = [
   [1, 2, 3],
@@ -143,12 +144,10 @@ const dataTwo = [
 
 // Using reduce flat dataTwo array
 
-function arrayFlat(arr) {
-  return arr.reduce((acc, curr) => {
-     acc = Array.isArray(curr) ? acc.concat(arrayFlat(curr)) : acc.concat(curr);
-     return acc;
-  }, []);
-}
+let flatDataTwo = dataTwo.reduce((acc, curr) => {
+  acc = acc.concat(curr.flat(Infinity));
+  return acc;
+}, []);
 /*
 
 Create these functions which accepts a number value and returns a number value:
